@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propuesta de Asociación — Edificio Residencial Bogotá · X.FORM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+  <style>
+    /* ═══════════════════════════════════════════════
+       X.FORM DESIGN SYSTEM
+       Lime    #C8FF3C   primary accent
+       Violeta #8B5CF6   secondary / Inversionista
+       Mostaza #F59E0B   warm accent
+       Cyan    #06B6D4   cool accent
+       Naranja #F97316   warm highlight
+       Black   #0A0A0A   primary dark
+       Cream   #F0EEE4   background
+    ═══════════════════════════════════════════════ */
+    :root {
+      --lime:     #C8FF3C;
+      --lime-dim: #A8DC1A;
+      --violeta:  #8B5CF6;
+      --violeta-dim: #7C3AED;
+      --mostaza:  #F59E0B;
+      --cyan:     #06B6D4;
+      --naranja:  #F97316;
+      --black:    #0A0A0A;
+      --charcoal: #1C1C1C;
+      --dark:     #2C2C2C;
+      --cream:    #F0EEE4;
+      --cream-2:  #E6E4DA;
+      --white:    #FFFFFF;
+      --mid:      #5A5A5A;
+      --muted:    #888880;
+      --border:   #D4D2C8;
+      --green:    #22C55E;
+      --tr-hover: rgba(200,255,60,0.06);
+    }
+
+    /* ── RESET & BASE ── */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Space Grotesk', 'Segoe UI', sans-serif;
+      background: var(--cream);
+      color: var(--black);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ══════════════════════════════════════
+       HEADER
+    ══════════════════════════════════════ */
+    .header {
+      background: var(--black);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='420'%3E%3Cellipse cx='450' cy='210' rx='430' ry='200' fill='none' stroke='%23ffffff0c' stroke-width='1.2'/%3E%3Cellipse cx='450' cy='210' rx='360' ry='165' fill='none' stroke='%23ffffff0a' stroke-width='1'/%3E%3Cellipse cx='450' cy='210' rx='290' ry='130' fill='none' stroke='%23ffffff09' stroke-width='1'/%3E%3Cellipse cx='450' cy='210' rx='220' ry='95' fill='none' stroke='%23ffffff08' stroke-width='1'/%3E%3Cellipse cx='450' cy='210' rx='150' ry='62' fill='none' stroke='%23ffffff07' stroke-width='1'/%3E%3Cellipse cx='160' cy='80' rx='220' ry='110' fill='none' stroke='%23ffffff07' stroke-width='1'/%3E%3Cellipse cx='740' cy='340' rx='200' ry='100' fill='none' stroke='%23ffffff07' stroke-width='1'/%3E%3Cellipse cx='800' cy='90' rx='180' ry='85' fill='none' stroke='%23ffffff08' stroke-width='1'/%3E%3Cellipse cx='80' cy='320' rx='160' ry='78' fill='none' stroke='%23ffffff07' stroke-width='1'/%3E%3Cellipse cx='600' cy='50' rx='140' ry='60' fill='none' stroke='%23ffffff06' stroke-width='1'/%3E%3C/svg%3E");
+      background-size: cover;
+      color: white;
+      padding: 38px 52px 34px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+    }
+    /* lime accent line at very top */
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--lime);
+    }
+    .header-tagline {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--lime);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 4px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .header-tagline::before {
+      content: '';
+      width: 24px; height: 1px;
+      background: var(--lime);
+    }
+    .header h1 {
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+    .header h1 em { color: var(--lime); font-style: normal; }
+    .header-meta { display: flex; gap: 40px; margin-top: 26px; }
+    .meta-box .label {
+      font-size: 9px;
+      color: rgba(255,255,255,.35);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+    .meta-box .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: white;
+      margin-top: 3px;
+    }
+    .header-right { text-align: right; }
+    .xform-logo {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: white;
+      text-transform: uppercase;
+      border: 1.5px solid rgba(255,255,255,.2);
+      padding: 9px 16px;
+      display: inline-block;
+      transition: border-color .3s;
+    }
+    .xform-logo:hover { border-color: var(--lime); }
+    .xform-logo em { color: var(--lime); font-style: normal; }
+    .xform-sub {
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: rgba(255,255,255,.35);
+      text-transform: uppercase;
+      margin-top: 4px;
+      text-align: center;
+    }
+    .header-date { margin-top: 22px; }
+    .date-label { font-size: 9px; color: rgba(255,255,255,.35); text-transform: uppercase; letter-spacing: 1.5px; }
+    .date-val { font-size: 20px; font-weight: 700; color: var(--lime); margin-top: 2px; letter-spacing: 1px; }
+
+    /* ══════════════════════════════════════
+       KPI BAR
+    ══════════════════════════════════════ */
+    .kpi-bar {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      border-bottom: 2px solid var(--black);
+    }
+    .kpi-item {
+      background: var(--white);
+      padding: 18px 22px;
+      border-right: 1px solid var(--cream-2);
+      position: relative;
+      overflow: hidden;
+      transition: background .2s;
+    }
+    .kpi-item::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+    .kpi-item.k-lime  { background: var(--lime); }
+    .kpi-item.k-black { background: var(--black); }
+    .kpi-item.k-limeT::after { background: var(--lime); }
+    .kpi-item.k-violetaT::after { background: var(--violeta); }
+    .kpi-item.k-mostazaT::after { background: var(--mostaza); }
+    .kpi-item.k-cyanT::after   { background: var(--cyan); }
+    .kpi-item.k-naranjaT::after { background: var(--naranja); }
+    .kpi-item:last-child { border-right: none; }
+    .kpi-label { font-size: 9px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--muted); font-weight: 600; }
+    .kpi-item.k-lime  .kpi-label { color: rgba(10,10,10,.5); }
+    .kpi-item.k-black .kpi-label { color: rgba(255,255,255,.4); }
+    .kpi-value { font-size: 22px; font-weight: 700; color: var(--black); margin-top: 6px; line-height: 1; letter-spacing: -0.5px; }
+    .kpi-item.k-lime  .kpi-value { color: var(--black); }
+    .kpi-item.k-black .kpi-value { color: white; }
+    .kv-green { color: var(--green) !important; }
+    .kpi-sub  { font-size: 10px; color: var(--muted); margin-top: 5px; }
+    .kpi-item.k-lime  .kpi-sub { color: rgba(10,10,10,.45); }
+    .kpi-item.k-black .kpi-sub { color: rgba(255,255,255,.3); }
+
+    /* ══════════════════════════════════════
+       TABS (sticky)
+    ══════════════════════════════════════ */
+    .tabs-nav {
+      display: flex;
+      background: var(--white);
+      border-bottom: 2px solid var(--cream-2);
+      padding: 0 52px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .tab-btn {
+      padding: 15px 22px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -2px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      transition: all .2s;
+      font-family: inherit;
+      position: relative;
+    }
+    .tab-btn::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 50%; right: 50%;
+      height: 3px;
+      background: var(--lime);
+      transition: left .25s, right .25s;
+    }
+    .tab-btn.active { color: var(--black); }
+    .tab-btn.active::after { left: 0; right: 0; }
+    .tab-btn:hover:not(.active) { color: var(--black); }
+
+    /* ══════════════════════════════════════
+       CONTENT (fade transition)
+    ══════════════════════════════════════ */
+    .tab-content { display: none; padding: 36px 52px 60px; }
+    .tab-content.active {
+      display: block;
+      animation: fadeSlide .3s ease;
+    }
+    @keyframes fadeSlide {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION HEADERS
+    ══════════════════════════════════════ */
+    .sec-hdr {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2.5px;
+      color: white;
+      background: var(--black);
+      padding: 12px 20px;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .sec-hdr:first-child { margin-top: 0; }
+    .sec-hdr .dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .sec-hdr.lime    { background: var(--lime);    color: var(--black); }
+    .sec-hdr.violeta { background: var(--violeta); }
+    .sec-hdr.mostaza { background: var(--mostaza); color: var(--black); }
+    .sec-hdr.cyan    { background: var(--cyan);    color: var(--black); }
+    .sec-hdr.naranja { background: var(--naranja); }
+
+    /* ══════════════════════════════════════
+       TABLES
+    ══════════════════════════════════════ */
+    .tbl-wrap { box-shadow: 0 2px 14px rgba(0,0,0,.07); overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; background: var(--white); }
+    thead th {
+      background: #F5F3EC;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--muted);
+      padding: 11px 18px;
+      border-bottom: 2px solid var(--cream-2);
+      text-align: left;
+    }
+    td {
+      padding: 11px 18px;
+      font-size: 13px;
+      border-bottom: 1px solid #F0EDE5;
+      color: var(--dark);
+      transition: background .15s;
+    }
+    tbody tr:hover td { background: var(--tr-hover); }
+    tr:last-child td  { border-bottom: none; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; font-size: 12.5px; }
+    .pct { text-align: right; color: var(--muted); font-size: 11px; }
+    .row-total td { background: var(--black) !important; color: white; font-weight: 700; }
+    .row-total .num { color: white; }
+    .row-total .pct { color: rgba(255,255,255,.4); }
+    .row-sub td  { background: #EDEBE3 !important; font-weight: 600; color: var(--black); }
+    .row-lime td { background: var(--lime) !important; color: var(--black); font-weight: 700; }
+    .row-lime .num { font-size: 14px; }
+    .row-lime .pct { color: rgba(10,10,10,.6); }
+    .note { font-size: 11px; color: var(--muted); font-style: italic; }
+    .fw6 { font-weight: 600; }
+    .fw7 { font-weight: 700; }
+
+    /* inline color dots in tables */
+    .cdot {
+      display: inline-block;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      margin-right: 7px;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════════════
+       CHARTS
+    ══════════════════════════════════════ */
+    .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .chart-card {
+      background: var(--white);
+      padding: 26px;
+      box-shadow: 0 2px 14px rgba(0,0,0,.07);
+      transition: box-shadow .2s;
+    }
+    .chart-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.1); }
+    .chart-title {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--cream-2);
+    }
+
+    /* ══════════════════════════════════════
+       PARTNER TAGS
+    ══════════════════════════════════════ */
+    .tag {
+      display: inline-block;
+      padding: 3px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .tag-fn { background: var(--black);    color: white; }
+    .tag-xd { background: var(--lime);     color: var(--black); }
+    .tag-ie { background: var(--violeta);  color: white; }
+
+    /* ══════════════════════════════════════
+       ROI BANNERS
+    ══════════════════════════════════════ */
+    .roi-banners { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 24px; }
+    .roi-banner {
+      padding: 28px 20px 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      cursor: default;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .roi-banner:hover { transform: translateY(-3px); box-shadow: 0 10px 32px rgba(0,0,0,.18); }
+    .roi-banner.fn { background: var(--black);    color: white; }
+    .roi-banner.xd { background: var(--lime);     color: var(--black); }
+    .roi-banner.ie { background: var(--violeta);  color: white; }
+    .roi-banner-name {
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 2px; opacity: .65; margin-bottom: 10px;
+    }
+    .roi-banner-pct {
+      font-size: 52px; font-weight: 700;
+      letter-spacing: -2px; line-height: 1;
+    }
+    .roi-banner-sub { font-size: 10px; opacity: .5; margin-top: 8px; text-transform: uppercase; letter-spacing: 1px; }
+    /* progress bar inside banner */
+    .roi-bar-wrap { margin-top: 16px; background: rgba(255,255,255,.15); height: 3px; border-radius: 2px; }
+    .roi-bar-fn { background: var(--lime); }
+    .roi-bar-xd { background: var(--black); }
+    .roi-bar-ie { background: var(--lime); }
+
+    /* ══════════════════════════════════════
+       PARTNER CARDS
+    ══════════════════════════════════════ */
+    .partner-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-bottom: 28px; }
+    .pcard {
+      overflow: hidden;
+      box-shadow: 0 3px 16px rgba(0,0,0,.1);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pcard:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.16); }
+    .pcard-hdr { padding: 20px 22px; position: relative; }
+    .pcard-hdr.fn { background: var(--black); color: white; }
+    .pcard-hdr.xd { background: var(--lime);  color: var(--black); }
+    .pcard-hdr.ie { background: var(--violeta); color: white; }
+    .pcard-hdr::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 22px;
+      width: 28px; height: 2px;
+      opacity: .4;
+    }
+    .pcard-hdr.fn::after { background: var(--lime); }
+    .pcard-hdr.xd::after { background: var(--black); }
+    .pcard-hdr.ie::after { background: var(--lime); }
+    .pcard-name { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; }
+    .pcard-role { font-size: 11px; opacity: .65; margin-top: 3px; }
+    .pcard-body { background: white; padding: 14px 22px 0; }
+    .prow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 7px 0;
+      border-bottom: 1px solid #F0EDE5;
+    }
+    .prow-lbl { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .5px; }
+    .prow-val { font-size: 13px; font-weight: 700; color: var(--dark); }
+    /* progress meter */
+    .pcard-meter { padding: 16px 22px 14px; background: white; }
+    .meter-label { display: flex; justify-content: space-between; margin-bottom: 6px; }
+    .meter-label span { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 600; }
+    .meter-label strong { font-size: 13px; font-weight: 700; }
+    .meter-track { background: var(--cream-2); height: 6px; border-radius: 3px; overflow: hidden; }
+    .meter-fill { height: 100%; border-radius: 3px; transition: width 1s cubic-bezier(.4,0,.2,1); }
+    .meter-fn { background: var(--black); }
+    .meter-xd { background: var(--lime); }
+    .meter-ie { background: var(--violeta); }
+
+    /* ══════════════════════════════════════
+       COST GRID
+    ══════════════════════════════════════ */
+    .cost-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    /* colored left border on cost sections */
+    .cost-block .sec-hdr { border-left: 5px solid; }
+    .cost-block.fin   .sec-hdr { border-left-color: var(--mostaza); }
+    .cost-block.indir .sec-hdr { border-left-color: var(--naranja); }
+    .cost-block.sp    .sec-hdr { border-left-color: var(--cyan); }
+    .cost-block.lic   .sec-hdr { border-left-color: var(--violeta); }
+
+    /* ══════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════ */
+    .footer {
+      background: var(--black);
+      color: rgba(255,255,255,.3);
+      text-align: center;
+      padding: 24px 52px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      border-top: 3px solid var(--lime);
+    }
+    .footer strong { color: var(--lime); font-weight: 700; }
+
+    /* ══════════════════════════════════════
+       UTILS
+    ══════════════════════════════════════ */
+    .mt { margin-top: 32px; }
+    .green { color: var(--green) !important; }
+    .summary-row { display: flex; gap: 16px; margin-bottom: 28px; }
+    .summary-pill {
+      background: white;
+      padding: 12px 20px;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.07);
+    }
+    .sp-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    .sp-label { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); font-weight: 600; }
+    .sp-val { font-size: 13px; font-weight: 700; color: var(--black); margin-top: 1px; }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════
+     HEADER
+═══════════════════════════════════════ -->
+<div class="header">
+  <div>
+    <div class="header-tagline">Propuesta de Asociación · Escenario 2 · 3 Socios</div>
+    <h1>EDIFICIO RESIDENCIAL<br><em>BOGOTÁ</em></h1>
+    <div class="header-meta">
+      <div class="meta-box"><div class="label">Área Construida</div><div class="value">2.210 m²</div></div>
+      <div class="meta-box"><div class="label">Área Vendible</div><div class="value">1.308 m²</div></div>
+      <div class="meta-box"><div class="label">Parqueaderos</div><div class="value">18 und</div></div>
+      <div class="meta-box"><div class="label">Área Terrazas</div><div class="value">216 m²</div></div>
+      <div class="meta-box"><div class="label">Costo / m²</div><div class="value">$3.500.000</div></div>
+      <div class="meta-box"><div class="label">IVA</div><div class="value">19%</div></div>
+    </div>
+  </div>
+  <div class="header-right">
+    <div class="xform-logo">X.<em>FORM</em></div>
+    <div class="xform-sub">Beyond Design</div>
+    <div class="header-date">
+      <div class="date-label">Fecha de Propuesta</div>
+      <div class="date-val">15 / 06 / 2026</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     KPI BAR
+═══════════════════════════════════════ -->
+<div class="kpi-bar">
+  <div class="kpi-item k-limeT">
+    <div class="kpi-label">Total Valor Comercial</div>
+    <div class="kpi-value">$20.220 MM</div>
+    <div class="kpi-sub">Ingresos totales del proyecto</div>
+  </div>
+  <div class="kpi-item k-violetaT">
+    <div class="kpi-label">Total Inversión</div>
+    <div class="kpi-value">$13.192 MM</div>
+    <div class="kpi-sub">3 socios · 100%</div>
+  </div>
+  <div class="kpi-item k-mostazaT">
+    <div class="kpi-label">Utilidad Bruta</div>
+    <div class="kpi-value kv-green">$7.028 MM</div>
+    <div class="kpi-sub">Sobre inversión total</div>
+  </div>
+  <div class="kpi-item k-black">
+    <div class="kpi-label">Margen Utilidad</div>
+    <div class="kpi-value">53,3%</div>
+    <div class="kpi-sub">Ventas / Inversión</div>
+  </div>
+  <div class="kpi-item k-cyanT">
+    <div class="kpi-label">Costo Directo de Obra</div>
+    <div class="kpi-value">$7.735 MM</div>
+    <div class="kpi-sub">2.210 m² · $3.500.000/m²</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     TABS
+═══════════════════════════════════════ -->
+<div class="tabs-nav">
+  <button class="tab-btn active" onclick="showTab(this,'prefact')">Prefactibilidad</button>
+  <button class="tab-btn" onclick="showTab(this,'resumen')">Resumen Ejecutivo</button>
+  <button class="tab-btn" onclick="showTab(this,'costos')">Estructura de Costos</button>
+  <button class="tab-btn" onclick="showTab(this,'socios')">Distribución por Socio</button>
+  <button class="tab-btn" onclick="showTab(this,'honorarios')">Honorarios</button>
+</div>
+
+<!-- ════════════ TAB 0: PREFACTIBILIDAD ════════════ -->
+<div id="tab-prefact" class="tab-content active">
+
+  <!-- KPI normativa -->
+  <div class="kpi-bar" style="border-bottom:2px solid var(--cream-2); margin-bottom:28px;">
+    <div class="kpi-item k-black">
+      <div class="kpi-label">Área Lote</div>
+      <div class="kpi-value">391,50 m²</div>
+      <div class="kpi-sub">*Área aprox — Teusaquillo</div>
+    </div>
+    <div class="kpi-item k-limeT">
+      <div class="kpi-label">Área Construida Total</div>
+      <div class="kpi-value">2.210,00 m²</div>
+      <div class="kpi-sub">6 pisos + cubierta + sótano</div>
+    </div>
+    <div class="kpi-item k-violetaT">
+      <div class="kpi-label">Área Bruta Vivienda</div>
+      <div class="kpi-value">1.260,74 m²</div>
+      <div class="kpi-sub">Neta: 1.071,63 m²</div>
+    </div>
+    <div class="kpi-item k-mostazaT">
+      <div class="kpi-label">Total Apartamentos</div>
+      <div class="kpi-value">32 uds</div>
+      <div class="kpi-sub">Pisos 1 al 6</div>
+    </div>
+    <div class="kpi-item k-cyanT">
+      <div class="kpi-label">Terrazas</div>
+      <div class="kpi-value">216,00 m²</div>
+      <div class="kpi-sub">Piso 3 (42) + Cubierta (174)</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-bottom:28px;">
+
+    <!-- Ficha técnica -->
+    <div>
+      <div class="sec-hdr" style="margin-top:0"><span class="dot" style="background:var(--lime)"></span>Ficha Técnica del Lote</div>
+      <div class="tbl-wrap">
+        <table>
+          <tbody>
+            <tr><td class="fw6" style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px; width:48%">Tratamiento</td><td class="fw7">CONSOLIDACIÓN</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Área de Actividad</td><td style="font-size:12px">Estructurante – Receptora VIS<br><span style="color:var(--muted);font-size:11px">Generadora de Soportes Urbanos</span></td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">UPL</td><td class="fw7">TEUSAQUILLO</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Área Lote</td><td class="fw7">391,50 m² <span style="color:var(--muted);font-weight:400;font-size:11px">(*aprox)</span></td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Altura</td><td class="fw7">5 Pisos <span style="color:var(--muted);font-weight:400;font-size:11px">+1 Dcto. 466/2024</span></td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Tipología</td><td class="fw7">CONTINUA</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">I.C. Base</td><td class="fw7">1,3</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Área para I.C.</td><td class="fw7">1.549,35 m²</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">I.C. Efectivo</td><td class="fw7">3,96</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">I.C. Adicional</td><td class="fw7">2,66</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Antejardín</td><td class="fw7">3,50 m</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Vlr. Ref. m² Lote</td><td class="fw7">$&nbsp;3.500.000 <span style="color:var(--muted);font-weight:400;font-size:11px">(*Mapas Bogotá)</span></td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Área Neta Vivienda</td><td class="fw7">1.071,63 m²</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Área Cálculo Estac.</td><td class="fw7">1.814,62 m²</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Cupos Bicicletas</td><td class="fw7">32</td></tr>
+            <tr><td style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:1px">Ventas / Const.</td><td class="fw7">0,62</td></tr>
+            <tr class="row-lime"><td>Parqueaderos</td><td class="fw7">18 und</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Chart área por uso -->
+    <div class="chart-card" style="align-self:start;">
+      <div class="chart-title">Distribución de Área Construida por Uso</div>
+      <canvas id="chartPrefactUso" height="240"></canvas>
+    </div>
+
+  </div>
+
+  <!-- Tabla por piso -->
+  <div class="sec-hdr"><span class="dot" style="background:var(--violeta)"></span>Distribución de Áreas por Piso (m²)</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Nivel</th>
+          <th class="num"><span class="cdot" style="background:var(--charcoal)"></span>Parqueaderos</th>
+          <th class="num"><span class="cdot" style="background:var(--naranja)"></span>Comercio</th>
+          <th class="num"><span class="cdot" style="background:var(--violeta)"></span>Vivienda</th>
+          <th class="num"><span class="cdot" style="background:var(--cyan)"></span>Circulaciones</th>
+          <th class="num"><span class="cdot" style="background:var(--mostaza)"></span>Equip. Comunal</th>
+          <th class="num"><span class="cdot" style="background:var(--mid)"></span>Ctos Técnicos</th>
+          <th class="num"><span class="cdot" style="background:var(--lime)"></span>Terrazas</th>
+          <th class="num">Total m²</th>
+          <th class="pct">No. Aptos</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="fw6">Sótano</td><td class="num">395,38</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num">0,00</td><td class="num">0,00</td><td class="num">—</td><td class="num fw6">395,38</td><td class="pct">—</td></tr>
+        <tr><td class="fw6">Piso 1</td><td class="num">0,00</td><td class="num">47,26</td><td class="num">—</td><td class="num">0,00</td><td class="num">250,27</td><td class="num">—</td><td class="num">—</td><td class="num fw6">297,53</td><td class="pct">1</td></tr>
+        <tr><td class="fw6">Piso 2</td><td class="num">—</td><td class="num">—</td><td class="num">280,62</td><td class="num">44,27</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num fw6">324,89</td><td class="pct">8</td></tr>
+        <tr><td class="fw6">Piso 3</td><td class="num">—</td><td class="num">—</td><td class="num">240,03</td><td class="num">44,27</td><td class="num">—</td><td class="num">—</td><td class="num" style="color:var(--lime-dim)">42,00</td><td class="num fw6">284,30</td><td class="pct">7</td></tr>
+        <tr><td class="fw6">Piso 4</td><td class="num">—</td><td class="num">—</td><td class="num">240,03</td><td class="num">44,27</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num fw6">284,30</td><td class="pct">7</td></tr>
+        <tr><td class="fw6">Piso 5</td><td class="num">—</td><td class="num">—</td><td class="num">240,03</td><td class="num">44,27</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num fw6">284,30</td><td class="pct">7</td></tr>
+        <tr><td class="fw6">Piso 6</td><td class="num">—</td><td class="num">—</td><td class="num">240,03</td><td class="num">44,27</td><td class="num">—</td><td class="num">—</td><td class="num">—</td><td class="num fw6">284,30</td><td class="pct">2</td></tr>
+        <tr><td class="fw6">Cubierta</td><td class="num">—</td><td class="num">—</td><td class="num">20,00</td><td class="num">20,00</td><td class="num">15,00</td><td class="num">—</td><td class="num" style="color:var(--lime-dim)">174,00</td><td class="num fw6">55,00</td><td class="pct">—</td></tr>
+        <tr class="row-lime">
+          <td>TOTAL</td>
+          <td class="num">395,38</td><td class="num">47,26</td><td class="num">1.260,74</td>
+          <td class="num">241,35</td><td class="num">265,27</td><td class="num">0,00</td>
+          <td class="num">216,00</td><td class="num">2.210,00</td><td class="pct">32</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Stacked bar por piso -->
+  <div class="chart-card mt">
+    <div class="chart-title">Composición de Áreas por Nivel (m²)</div>
+    <canvas id="chartPrefactPiso" height="90"></canvas>
+  </div>
+
+  <!-- resumen aptos -->
+  <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:28px;">
+    <div class="pcard" style="grid-column:span 2;">
+      <div class="pcard-hdr xd">
+        <div class="pcard-name">Distribución de Apartamentos</div>
+        <div class="pcard-role">32 unidades · 6 pisos residenciales</div>
+      </div>
+      <div class="pcard-body">
+        <div class="prow"><span class="prow-lbl">Piso 1</span><span class="prow-val">1 apto</span></div>
+        <div class="prow"><span class="prow-lbl">Piso 2</span><span class="prow-val">8 aptos</span></div>
+        <div class="prow"><span class="prow-lbl">Piso 3</span><span class="prow-val">7 aptos</span></div>
+        <div class="prow"><span class="prow-lbl">Piso 4</span><span class="prow-val">7 aptos</span></div>
+        <div class="prow"><span class="prow-lbl">Piso 5</span><span class="prow-val">7 aptos</span></div>
+        <div class="prow" style="border:none"><span class="prow-lbl">Piso 6</span><span class="prow-val">2 aptos</span></div>
+      </div>
+      <div class="pcard-meter">
+        <div class="meter-label"><span>Total</span><strong>32 unidades</strong></div>
+        <div class="meter-track"><div class="meter-fill meter-xd" style="width:100%"></div></div>
+      </div>
+    </div>
+    <div style="grid-column:span 3; display:grid; grid-template-columns:1fr 1fr; gap:12px; align-content:start;">
+      <div class="kpi-item k-black" style="box-shadow:0 2px 10px rgba(0,0,0,.1)">
+        <div class="kpi-label">Área Neta Prom. / Apto</div>
+        <div class="kpi-value">33,5 m²</div>
+        <div class="kpi-sub">1.071,63 m² ÷ 32 uds</div>
+      </div>
+      <div class="kpi-item k-limeT" style="box-shadow:0 2px 10px rgba(0,0,0,.1)">
+        <div class="kpi-label">Área Bruta Prom. / Apto</div>
+        <div class="kpi-value">39,4 m²</div>
+        <div class="kpi-sub">1.260,74 m² ÷ 32 uds</div>
+      </div>
+      <div class="kpi-item k-violetaT" style="box-shadow:0 2px 10px rgba(0,0,0,.1)">
+        <div class="kpi-label">Eficiencia Vivienda</div>
+        <div class="kpi-value">57,0%</div>
+        <div class="kpi-sub">1.260 / 2.210 m²</div>
+      </div>
+      <div class="kpi-item k-cyanT" style="box-shadow:0 2px 10px rgba(0,0,0,.1)">
+        <div class="kpi-label">Ratio Vendible / Const.</div>
+        <div class="kpi-value">0,62</div>
+        <div class="kpi-sub">Área vendible / construida</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════ TAB 1: RESUMEN ════════════ -->
+<div id="tab-resumen" class="tab-content">
+
+  <!-- color legend pills -->
+  <div class="summary-row">
+    <div class="summary-pill">
+      <div class="sp-dot" style="background:var(--black)"></div>
+      <div><div class="sp-label">Familia Nieto</div><div class="sp-val">Lote · 23,6%</div></div>
+    </div>
+    <div class="summary-pill">
+      <div class="sp-dot" style="background:var(--lime)"></div>
+      <div><div class="sp-label">X.Form</div><div class="sp-val">Honor.+Preop. · 17,8%</div></div>
+    </div>
+    <div class="summary-pill">
+      <div class="sp-dot" style="background:var(--violeta)"></div>
+      <div><div class="sp-label">Inversionista Externo</div><div class="sp-val">Obra · 58,6%</div></div>
+    </div>
+    <div class="summary-pill" style="background:var(--black); color:white;">
+      <div class="sp-dot" style="background:var(--lime)"></div>
+      <div><div class="sp-label" style="color:rgba(255,255,255,.45)">Margen total</div><div class="sp-val" style="color:var(--lime)">53,3%</div></div>
+    </div>
+  </div>
+
+  <div class="charts-grid" style="margin-bottom:32px">
+    <div class="chart-card">
+      <div class="chart-title">Distribución de Ventas por Socio</div>
+      <canvas id="chartVentas" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Aporte vs. Retorno por Socio (MM COP)</div>
+      <canvas id="chartAporteRet" height="200"></canvas>
+    </div>
+  </div>
+
+  <div class="sec-hdr"><span class="dot" style="background:var(--lime)"></span>Ventas Potenciales</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Concepto</th><th class="num">Cantidad</th><th class="num">Precio Unitario</th><th class="num">Total COP</th><th class="pct">%</th></tr></thead>
+      <tbody>
+        <tr><td>Área Vendible</td><td class="num">1.308 m²</td><td class="num">$&nbsp;14.000.000</td><td class="num">$&nbsp;18.312.000.000</td><td class="pct">90,6%</td></tr>
+        <tr><td>Área Terrazas <span class="note">(1/3 del m²)</span></td><td class="num">216 m²</td><td class="num">$&nbsp;4.666.667</td><td class="num">$&nbsp;1.008.000.000</td><td class="pct">5,0%</td></tr>
+        <tr><td>Parqueaderos</td><td class="num">18 und</td><td class="num">$&nbsp;50.000.000</td><td class="num">$&nbsp;900.000.000</td><td class="pct">4,5%</td></tr>
+        <tr class="row-lime"><td colspan="3">TOTAL VALOR COMERCIAL</td><td class="num">$&nbsp;20.220.000.000</td><td class="pct">100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-hdr mt"><span class="dot" style="background:var(--violeta)"></span>Resumen de Inversión por Categoría</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Categoría</th><th class="num">Valor COP</th><th class="pct">% Total</th><th>Aportante</th></tr></thead>
+      <tbody>
+        <tr><td><span class="cdot" style="background:var(--violeta)"></span>Costo Directo de Obra</td><td class="num">$&nbsp;7.735.000.000</td><td class="pct">58,6%</td><td><span class="tag tag-ie">Inversionista Externo</span></td></tr>
+        <tr><td><span class="cdot" style="background:var(--black)"></span>Lote e Impuestos</td><td class="num">$&nbsp;3.110.700.000</td><td class="pct">23,6%</td><td><span class="tag tag-fn">Familia Nieto</span></td></tr>
+        <tr><td><span class="cdot" style="background:var(--lime)"></span>Honorarios — Estructuración, Diseños y Obra</td><td class="num">$&nbsp;1.507.069.550</td><td class="pct">11,4%</td><td><span class="tag tag-xd">X.Form</span></td></tr>
+        <tr><td><span class="cdot" style="background:var(--lime-dim)"></span>Preoperativos (Financ., Indirectos, Licencias, SP)</td><td class="num">$&nbsp;839.292.530</td><td class="pct">6,4%</td><td><span class="tag tag-xd">X.Form</span></td></tr>
+        <tr class="row-lime"><td>TOTAL PROYECTO</td><td class="num">$&nbsp;13.192.062.080</td><td class="pct">100%</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-hdr lime mt"><span class="dot" style="background:var(--black)"></span>Resultado Final del Proyecto</div>
+  <div class="tbl-wrap">
+    <table>
+      <tbody>
+        <tr><td class="fw6">Total Ventas</td><td class="num fw6">$&nbsp;20.220.000.000</td><td class="pct"></td></tr>
+        <tr><td class="fw6">Total Costos del Proyecto</td><td class="num fw6">$&nbsp;13.192.062.080</td><td class="pct"></td></tr>
+        <tr class="row-lime"><td>UTILIDAD BRUTA</td><td class="num">$&nbsp;7.027.937.920</td><td class="pct">Margen: 53,3%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- ════════════ TAB 2: COSTOS ════════════ -->
+<div id="tab-costos" class="tab-content">
+
+  <div class="cost-grid">
+
+    <div class="cost-block fin">
+      <div class="sec-hdr" style="margin-top:0"><span class="dot" style="background:var(--mostaza)"></span>Costos Financieros</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Concepto</th><th class="num">Valor COP</th><th class="pct">Base</th></tr></thead>
+          <tbody>
+            <tr><td>Comisiones por Ventas (3%)</td><td class="num" style="color:var(--muted)">$&nbsp;—</td><td class="pct note">No aplica</td></tr>
+            <tr><td>Impuesto a la Transacción Final (0,34%)</td><td class="num">$&nbsp;68.748.000</td><td class="pct note">s/Valor Comercial</td></tr>
+            <tr><td>Fiducia (0,80%)</td><td class="num">$&nbsp;106.453.530</td><td class="pct note">s/Inversión Total</td></tr>
+            <tr><td>Póliza Decenal (1%)</td><td class="num">$&nbsp;77.350.000</td><td class="pct note">s/Valor de Obra</td></tr>
+            <tr class="row-total"><td>TOTAL</td><td class="num">$&nbsp;252.551.530</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cost-block indir">
+      <div class="sec-hdr" style="margin-top:0"><span class="dot" style="background:var(--naranja)"></span>Costos Indirectos de Obra (18 meses)</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Concepto</th><th class="num">Valor COP</th></tr></thead>
+          <tbody>
+            <tr><td>Celador</td><td class="num">$&nbsp;95.400.000</td></tr>
+            <tr><td>Servicio Energía</td><td class="num">$&nbsp;13.500.000</td></tr>
+            <tr><td>Servicio Agua</td><td class="num">$&nbsp;13.500.000</td></tr>
+            <tr><td>Contabilidad + 2 Meses de Cierre</td><td class="num">$&nbsp;50.000.000</td></tr>
+            <tr><td>Documentación + 2 Meses de Cierre</td><td class="num">$&nbsp;3.000.000</td></tr>
+            <tr class="row-total"><td>TOTAL</td><td class="num">$&nbsp;175.400.000</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cost-block sp">
+      <div class="sec-hdr"><span class="dot" style="background:var(--cyan)"></span>Servicios Públicos</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Concepto</th><th class="num">Valor COP</th><th class="pct">% s/CD Obra</th></tr></thead>
+          <tbody>
+            <tr><td>Derechos de Acueducto</td><td class="num">$&nbsp;15.470.000</td><td class="pct">0,20%</td></tr>
+            <tr><td>Medidores de Agua</td><td class="num">$&nbsp;7.735.000</td><td class="pct">0,10%</td></tr>
+            <tr><td>Derechos de Energía</td><td class="num">$&nbsp;15.470.000</td><td class="pct">0,20%</td></tr>
+            <tr><td>Contadores de Energía</td><td class="num">$&nbsp;15.470.000</td><td class="pct">0,20%</td></tr>
+            <tr><td>Derechos de Teléfono</td><td class="num">$&nbsp;1.547.000</td><td class="pct">0,02%</td></tr>
+            <tr class="row-total"><td>TOTAL</td><td class="num">$&nbsp;55.692.000</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="cost-block lic">
+      <div class="sec-hdr"><span class="dot" style="background:var(--violeta)"></span>Licencias y Permisos</div>
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Concepto</th><th class="num">Valor COP</th><th class="pct">%</th></tr></thead>
+          <tbody>
+            <tr><td>Licencia de Construcción</td><td class="num">$&nbsp;92.820.000</td><td class="pct">1,20%</td></tr>
+            <tr><td>Cargas Urbanísticas</td><td class="num">$&nbsp;100.555.000</td><td class="pct">1,30%</td></tr>
+            <tr><td>Escrituración</td><td class="num">$&nbsp;64.704.000</td><td class="pct">0,32%</td></tr>
+            <tr><td>Reglamento PH</td><td class="num">$&nbsp;20.220.000</td><td class="pct">0,10%</td></tr>
+            <tr><td>Imprevistos</td><td class="num">$&nbsp;77.350.000</td><td class="pct">1,00%</td></tr>
+            <tr class="row-total"><td>TOTAL</td><td class="num">$&nbsp;355.649.000</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-hdr mt"><span class="dot" style="background:var(--naranja)"></span>Lote e Impuestos</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Concepto</th><th class="num">Valor COP</th><th class="pct">Observación</th></tr></thead>
+      <tbody>
+        <tr><td>Valor Catastral Lote</td><td class="num">$&nbsp;3.000.000.000</td><td class="pct">—</td></tr>
+        <tr><td>Gastos Notariales (0,35%)</td><td class="num">$&nbsp;10.500.000</td><td class="pct">s/Lote</td></tr>
+        <tr><td>Registro de Beneficencia (2%)</td><td class="num">$&nbsp;60.000.000</td><td class="pct">2 años</td></tr>
+        <tr><td>Impuesto Predial (1,34%)</td><td class="num">$&nbsp;40.200.000</td><td class="pct">2 años</td></tr>
+        <tr class="row-total"><td>TOTAL LOTE E IMPUESTOS</td><td class="num">$&nbsp;3.110.700.000</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-hdr lime mt"><span class="dot" style="background:var(--black)"></span>Consolidado de Costos del Proyecto</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Categoría</th><th class="num">Valor COP</th><th class="pct">% del Total</th></tr></thead>
+      <tbody>
+        <tr><td><span class="cdot" style="background:var(--mostaza)"></span>Costos Financieros</td><td class="num">$&nbsp;252.551.530</td><td class="pct">1,9%</td></tr>
+        <tr><td><span class="cdot" style="background:var(--naranja)"></span>Costos Indirectos Obra 18 Meses</td><td class="num">$&nbsp;175.400.000</td><td class="pct">1,3%</td></tr>
+        <tr><td><span class="cdot" style="background:var(--cyan)"></span>Servicios Públicos</td><td class="num">$&nbsp;55.692.000</td><td class="pct">0,4%</td></tr>
+        <tr><td><span class="cdot" style="background:var(--violeta)"></span>Licencias y Permisos</td><td class="num">$&nbsp;355.649.000</td><td class="pct">2,7%</td></tr>
+        <tr class="row-sub"><td><span class="cdot" style="background:var(--lime)"></span>Subtotal Preoperativos &nbsp;<span class="tag tag-xd">X.Form</span></td><td class="num">$&nbsp;839.292.530</td><td class="pct">6,4%</td></tr>
+        <tr><td><span class="cdot" style="background:var(--black)"></span>Aporte Lote e Impuestos &nbsp;<span class="tag tag-fn">Familia Nieto</span></td><td class="num">$&nbsp;3.110.700.000</td><td class="pct">23,6%</td></tr>
+        <tr><td><span class="cdot" style="background:var(--lime-dim)"></span>Honorarios Estructuración, Diseños y Obra &nbsp;<span class="tag tag-xd">X.Form</span></td><td class="num">$&nbsp;1.507.069.550</td><td class="pct">11,4%</td></tr>
+        <tr class="row-sub"><td>Subtotal Costos Indirectos</td><td class="num">$&nbsp;5.457.062.080</td><td class="pct">41,4%</td></tr>
+        <tr><td><span class="cdot" style="background:var(--violeta)"></span>Costo Directo de Obra &nbsp;<span class="tag tag-ie">Inversionista Externo</span></td><td class="num">$&nbsp;7.735.000.000</td><td class="pct">58,6%</td></tr>
+        <tr class="row-lime"><td>TOTAL PROYECTO</td><td class="num">$&nbsp;13.192.062.080</td><td class="pct">100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="chart-card mt">
+    <div class="chart-title">Distribución de Costos por Categoría (MM COP)</div>
+    <canvas id="chartCostos" height="80"></canvas>
+  </div>
+
+</div>
+
+<!-- ════════════ TAB 3: SOCIOS ════════════ -->
+<div id="tab-socios" class="tab-content">
+
+  <div class="roi-banners">
+    <div class="roi-banner fn">
+      <div class="roi-banner-name">Familia Nieto</div>
+      <div class="roi-banner-pct" id="roi-fn">54,0%</div>
+      <div class="roi-banner-sub">ROI sobre su aporte</div>
+      <div class="roi-bar-wrap"><div class="meter-fill roi-bar-fn" style="width:77%"></div></div>
+    </div>
+    <div class="roi-banner xd">
+      <div class="roi-banner-name">X.Form</div>
+      <div class="roi-banner-pct" id="roi-xd">60,7%</div>
+      <div class="roi-banner-sub">ROI sobre su aporte</div>
+      <div class="roi-bar-wrap"><div class="meter-fill roi-bar-xd" style="width:87%"></div></div>
+    </div>
+    <div class="roi-banner ie">
+      <div class="roi-banner-name">Inversionista Externo</div>
+      <div class="roi-banner-pct" id="roi-ie">50,7%</div>
+      <div class="roi-banner-sub">ROI sobre su aporte</div>
+      <div class="roi-bar-wrap"><div class="meter-fill roi-bar-ie" style="width:72%"></div></div>
+    </div>
+  </div>
+
+  <div class="partner-cards">
+
+    <div class="pcard">
+      <div class="pcard-hdr fn">
+        <div class="pcard-name">Familia Nieto</div>
+        <div class="pcard-role">Aportante del Lote · 23,6% de la Inversión</div>
+      </div>
+      <div class="pcard-body">
+        <div class="prow"><span class="prow-lbl">Área entregada</span><span class="prow-val">270 m²</span></div>
+        <div class="prow"><span class="prow-lbl">Parqueaderos</span><span class="prow-val">4 und</span></div>
+        <div class="prow"><span class="prow-lbl">Área terraza</span><span class="prow-val">174 m²</span></div>
+        <div class="prow"><span class="prow-lbl">Total Ventas</span><span class="prow-val">$4.792.000.000</span></div>
+        <div class="prow"><span class="prow-lbl">Aporte (Lote)</span><span class="prow-val">$3.110.700.000</span></div>
+        <div class="prow"><span class="prow-lbl">Utilidad</span><span class="prow-val green">$1.681.300.000</span></div>
+        <div class="prow"><span class="prow-lbl">Part. Ventas</span><span class="prow-val">23,7%</span></div>
+        <div class="prow" style="border:none"><span class="prow-lbl">Part. Inversión</span><span class="prow-val">23,6%</span></div>
+      </div>
+      <div class="pcard-meter">
+        <div class="meter-label"><span>ROI</span><strong>54,0%</strong></div>
+        <div class="meter-track"><div class="meter-fill meter-fn" style="width:0%" data-w="77%"></div></div>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-hdr xd">
+        <div class="pcard-name">X.Form</div>
+        <div class="pcard-role">Gestión, Diseño y Preoperativos · 17,8%</div>
+      </div>
+      <div class="pcard-body">
+        <div class="prow"><span class="prow-lbl">Área entregada</span><span class="prow-val">255 m²</span></div>
+        <div class="prow"><span class="prow-lbl">Parqueaderos</span><span class="prow-val">4 und</span></div>
+        <div class="prow"><span class="prow-lbl">Área terraza</span><span class="prow-val">0 m²</span></div>
+        <div class="prow"><span class="prow-lbl">Total Ventas</span><span class="prow-val">$3.770.000.000</span></div>
+        <div class="prow"><span class="prow-lbl">Aporte (Honor.+Preop.)</span><span class="prow-val">$2.346.362.080</span></div>
+        <div class="prow"><span class="prow-lbl">Utilidad</span><span class="prow-val green">$1.423.637.920</span></div>
+        <div class="prow"><span class="prow-lbl">Part. Ventas</span><span class="prow-val">18,6%</span></div>
+        <div class="prow" style="border:none"><span class="prow-lbl">Part. Inversión</span><span class="prow-val">17,8%</span></div>
+      </div>
+      <div class="pcard-meter">
+        <div class="meter-label"><span>ROI</span><strong>60,7%</strong></div>
+        <div class="meter-track"><div class="meter-fill meter-xd" style="width:0%" data-w="87%"></div></div>
+      </div>
+    </div>
+
+    <div class="pcard">
+      <div class="pcard-hdr ie">
+        <div class="pcard-name">Inversionista Externo</div>
+        <div class="pcard-role">Financiación Costo Directo de Obra · 58,6%</div>
+      </div>
+      <div class="pcard-body">
+        <div class="prow"><span class="prow-lbl">Área entregada</span><span class="prow-val">783 m²</span></div>
+        <div class="prow"><span class="prow-lbl">Parqueaderos</span><span class="prow-val">10 und</span></div>
+        <div class="prow"><span class="prow-lbl">Área terraza</span><span class="prow-val">42 m²</span></div>
+        <div class="prow"><span class="prow-lbl">Total Ventas</span><span class="prow-val">$11.658.000.000</span></div>
+        <div class="prow"><span class="prow-lbl">Aporte (Obra)</span><span class="prow-val">$7.735.000.000</span></div>
+        <div class="prow"><span class="prow-lbl">Utilidad</span><span class="prow-val green">$3.923.000.000</span></div>
+        <div class="prow"><span class="prow-lbl">Part. Ventas</span><span class="prow-val">57,7%</span></div>
+        <div class="prow" style="border:none"><span class="prow-lbl">Part. Inversión</span><span class="prow-val">58,6%</span></div>
+      </div>
+      <div class="pcard-meter">
+        <div class="meter-label"><span>ROI</span><strong>50,7%</strong></div>
+        <div class="meter-track"><div class="meter-fill meter-ie" style="width:0%" data-w="72%"></div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sec-hdr"><span class="dot" style="background:var(--lime)"></span>Tabla Comparativa de Socios</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Socio</th>
+          <th class="num">Área (m²)</th>
+          <th class="num">Parqueos</th>
+          <th class="num">Terraza (m²)</th>
+          <th class="num">Total Ventas</th>
+          <th class="num">Aporte</th>
+          <th class="num">Utilidad</th>
+          <th class="pct">ROI</th>
+          <th class="pct">% Ventas</th>
+          <th class="pct">% Inv.</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag tag-fn">Familia Nieto</span></td>
+          <td class="num">270</td><td class="num">4</td><td class="num">174</td>
+          <td class="num">$&nbsp;4.792.000.000</td>
+          <td class="num">$&nbsp;3.110.700.000</td>
+          <td class="num green fw7">$&nbsp;1.681.300.000</td>
+          <td class="pct fw7" style="color:var(--black)">54,0%</td>
+          <td class="pct">23,7%</td><td class="pct">23,6%</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-xd">X.Form</span></td>
+          <td class="num">255</td><td class="num">4</td><td class="num">0</td>
+          <td class="num">$&nbsp;3.770.000.000</td>
+          <td class="num">$&nbsp;2.346.362.080</td>
+          <td class="num green fw7">$&nbsp;1.423.637.920</td>
+          <td class="pct fw7" style="color:var(--lime-dim)">60,7%</td>
+          <td class="pct">18,6%</td><td class="pct">17,8%</td>
+        </tr>
+        <tr>
+          <td><span class="tag tag-ie">Inversionista Externo</span></td>
+          <td class="num">783</td><td class="num">10</td><td class="num">42</td>
+          <td class="num">$&nbsp;11.658.000.000</td>
+          <td class="num">$&nbsp;7.735.000.000</td>
+          <td class="num green fw7">$&nbsp;3.923.000.000</td>
+          <td class="pct fw7" style="color:var(--violeta-dim)">50,7%</td>
+          <td class="pct">57,7%</td><td class="pct">58,6%</td>
+        </tr>
+        <tr class="row-lime">
+          <td>TOTAL</td>
+          <td class="num">1.308</td><td class="num">18</td><td class="num">216</td>
+          <td class="num">$&nbsp;20.220.000.000</td>
+          <td class="num">$&nbsp;13.192.062.080</td>
+          <td class="num">$&nbsp;7.027.937.920</td>
+          <td class="pct">53,3%</td>
+          <td class="pct">100%</td><td class="pct">100%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="charts-grid mt">
+    <div class="chart-card">
+      <div class="chart-title">ROI por Socio (%)</div>
+      <canvas id="chartROI" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Distribución de Inversión Total</div>
+      <canvas id="chartInvDist" height="200"></canvas>
+    </div>
+  </div>
+
+</div>
+
+<!-- ════════════ TAB 4: HONORARIOS ════════════ -->
+<div id="tab-honorarios" class="tab-content">
+
+  <div class="sec-hdr" style="margin-top:0"><span class="dot" style="background:var(--lime)"></span>Desglose Honorarios — Estructuración, Diseños y Obra</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Ítem</th><th class="num">Valor Honorario (COP)</th><th class="pct">Peso %</th></tr></thead>
+      <tbody>
+        <tr><td style="color:var(--muted)">1</td><td><span class="cdot" style="background:var(--black)"></span>Honorarios de Gestión y Ejecución de Obra (AIU 9%)</td><td class="num">$&nbsp;696.150.000</td><td class="pct">46,2%</td></tr>
+        <tr><td style="color:var(--muted)">2</td><td><span class="cdot" style="background:var(--violeta)"></span>Diseño Arquitectónico, Interior, Urbanismo y Paisajismo</td><td class="num">$&nbsp;280.600.000</td><td class="pct">18,6%</td></tr>
+        <tr><td style="color:var(--muted)">3</td><td><span class="cdot" style="background:var(--cyan)"></span>Diseños Técnicos</td><td class="num">$&nbsp;122.500.000</td><td class="pct">8,1%</td></tr>
+        <tr><td style="color:var(--muted)">4</td><td><span class="cdot" style="background:var(--mostaza)"></span>Equipo Legal</td><td class="num">$&nbsp;80.000.000</td><td class="pct">5,3%</td></tr>
+        <tr><td style="color:var(--muted)">5</td><td><span class="cdot" style="background:var(--naranja)"></span>Equipo Financiero</td><td class="num">$&nbsp;70.000.000</td><td class="pct">4,6%</td></tr>
+        <tr><td style="color:var(--muted)">6</td><td><span class="cdot" style="background:var(--lime)"></span>Gerencia, Gestión y Coordinación</td><td class="num">$&nbsp;60.000.000</td><td class="pct">4,0%</td></tr>
+        <tr><td style="color:var(--muted)">7</td><td><span class="cdot" style="background:var(--charcoal)"></span>Branding</td><td class="num">$&nbsp;15.000.000</td><td class="pct">1,0%</td></tr>
+        <tr><td style="color:var(--muted)">8</td><td><span class="cdot" style="background:var(--mid)"></span>Pólizas</td><td class="num">$&nbsp;20.000.000</td><td class="pct">1,3%</td></tr>
+        <tr><td style="color:var(--muted)">9</td><td><span class="cdot" style="background:var(--violeta-dim)"></span>Impuestos y Retenciones (IVA + ICA)</td><td class="num">$&nbsp;162.819.550</td><td class="pct">10,8%</td></tr>
+        <tr class="row-lime"><td colspan="2">TOTAL HONORARIOS</td><td class="num">$&nbsp;1.507.069.550</td><td class="pct">100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="charts-grid mt">
+    <div class="chart-card">
+      <div class="chart-title">Honorarios por Categoría (MM COP)</div>
+      <canvas id="chartHonorarios" height="260"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Desglose Preoperativos (MM COP)</div>
+      <canvas id="chartPreop" height="260"></canvas>
+    </div>
+  </div>
+
+  <div class="sec-hdr mt"><span class="dot" style="background:var(--lime)"></span>Desglose Preoperativos — Aporte X.Form</div>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>Categoría</th><th class="num">Valor COP</th><th class="pct">%</th></tr></thead>
+      <tbody>
+        <tr><td><span class="cdot" style="background:var(--mostaza)"></span>Costos Financieros</td><td class="num">$&nbsp;252.551.530</td><td class="pct">30,1%</td></tr>
+        <tr><td><span class="cdot" style="background:var(--naranja)"></span>Costos Indirectos Obra 18 Meses</td><td class="num">$&nbsp;175.400.000</td><td class="pct">20,9%</td></tr>
+        <tr><td><span class="cdot" style="background:var(--cyan)"></span>Servicios Públicos</td><td class="num">$&nbsp;55.692.000</td><td class="pct">6,6%</td></tr>
+        <tr><td><span class="cdot" style="background:var(--violeta)"></span>Licencias y Permisos</td><td class="num">$&nbsp;355.649.000</td><td class="pct">42,4%</td></tr>
+        <tr class="row-total"><td>TOTAL PREOPERATIVOS</td><td class="num">$&nbsp;839.292.530</td><td class="pct">100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sec-hdr lime mt"><span class="dot" style="background:var(--black)"></span>Aporte Total X.Form al Proyecto</div>
+  <div class="tbl-wrap">
+    <table>
+      <tbody>
+        <tr><td class="fw6">Honorarios — Estructuración, Diseños y Obra</td><td class="num fw6">$&nbsp;1.507.069.550</td><td class="pct fw6">64,2%</td></tr>
+        <tr><td class="fw6">Preoperativos</td><td class="num fw6">$&nbsp;839.292.530</td><td class="pct fw6">35,8%</td></tr>
+        <tr class="row-lime"><td>TOTAL APORTE X.FORM</td><td class="num">$&nbsp;2.346.362.080</td><td class="pct">100%</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <strong>X.FORM</strong> · Beyond Design &nbsp;·&nbsp; Propuesta Confidencial &nbsp;·&nbsp; Edificio Residencial Bogotá &nbsp;·&nbsp; 15 de Junio de 2026<br>
+  <span style="font-size:9px;opacity:.6">Todos los valores en pesos colombianos (COP). Sujeto a validación y aprobación final de todas las partes.</span>
+</div>
+
+<script>
+  /* ── palette ── */
+  const XF = {
+    lime:    '#C8FF3C',
+    limeDim: '#A8DC1A',
+    violeta: '#8B5CF6',
+    mostaza: '#F59E0B',
+    cyan:    '#06B6D4',
+    naranja: '#F97316',
+    black:   '#0A0A0A',
+    charcoal:'#1C1C1C',
+    cream:   '#F0EEE4',
+    cream2:  '#E6E4DA',
+    green:   '#22C55E',
+  };
+
+  /* ── tabs ── */
+  function showTab(btn, name) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+    if (name === 'prefact')    { initPrefactUso(); initPrefactPiso(); }
+    if (name === 'socios')     { initROI(); initInvDist(); animateMeters(); }
+    if (name === 'honorarios') { initHonorarios(); initPreop(); }
+    if (name === 'costos')     { initCostos(); }
+  }
+
+  /* ── meter animation ── */
+  function animateMeters() {
+    document.querySelectorAll('.meter-fill[data-w]').forEach(el => {
+      setTimeout(() => { el.style.width = el.dataset.w; }, 100);
+    });
+  }
+
+  /* ── Chart defaults ── */
+  Chart.defaults.font.family = "'Space Grotesk', 'Segoe UI', sans-serif";
+  Chart.defaults.color = '#888880';
+
+  const gridOpts = { color: '#E6E4DA' };
+  const tooltipCfg = { backgroundColor: XF.black, titleColor: XF.lime, bodyColor: 'white', padding: 10, cornerRadius: 0 };
+
+  /* ── Tab 0: Prefact — Uso ── */
+  function initPrefactUso() {
+    const el = document.getElementById('chartPrefactUso');
+    if (el._done) return; el._done = true;
+    new Chart(el, {
+      type: 'doughnut',
+      data: {
+        labels: ['Parqueaderos', 'Comercio', 'Vivienda', 'Circulaciones', 'Equip. Comunal', 'Terrazas'],
+        datasets: [{
+          data: [395.38, 47.26, 1260.74, 241.35, 265.27, 216.00],
+          backgroundColor: [XF.charcoal, XF.naranja, XF.violeta, XF.cyan, XF.mostaza, XF.lime],
+          borderWidth: 5, borderColor: XF.cream
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { padding: 14, usePointStyle: true, pointStyle: 'rect' } },
+          tooltip: { ...tooltipCfg, callbacks: { label: ctx => ` ${ctx.label}: ${ctx.raw.toLocaleString('de-DE')} m² (${(ctx.raw/2210*100).toFixed(1)}%)` } }
+        }
+      }
+    });
+  }
+
+  /* ── Tab 0: Prefact — Piso stacked ── */
+  function initPrefactPiso() {
+    const el = document.getElementById('chartPrefactPiso');
+    if (el._done) return; el._done = true;
+    new Chart(el, {
+      type: 'bar',
+      data: {
+        labels: ['Sótano', 'Piso 1', 'Piso 2', 'Piso 3', 'Piso 4', 'Piso 5', 'Piso 6', 'Cubierta'],
+        datasets: [
+          { label: 'Parqueaderos', data: [395.38,0,0,0,0,0,0,0],         backgroundColor: XF.charcoal,  stack: 'a', borderRadius:0 },
+          { label: 'Comercio',     data: [0,47.26,0,0,0,0,0,0],           backgroundColor: XF.naranja,   stack: 'a', borderRadius:0 },
+          { label: 'Vivienda',     data: [0,0,280.62,240.03,240.03,240.03,240.03,20], backgroundColor: XF.violeta, stack: 'a', borderRadius:0 },
+          { label: 'Circulaciones',data: [0,0,44.27,44.27,44.27,44.27,44.27,20],     backgroundColor: XF.cyan,    stack: 'a', borderRadius:0 },
+          { label: 'Equip. Comunal',data:[0,250.27,0,0,0,0,0,15],         backgroundColor: XF.mostaza,  stack: 'a', borderRadius:0 },
+          { label: 'Terrazas',     data: [0,0,0,42,0,0,0,174],            backgroundColor: XF.lime,      stack: 'a', borderRadius:0 }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { padding: 14, usePointStyle: true, pointStyle: 'rect' } },
+          tooltip: { ...tooltipCfg, callbacks: { label: ctx => ctx.raw > 0 ? ` ${ctx.dataset.label}: ${ctx.raw.toLocaleString('de-DE')} m²` : null } }
+        },
+        scales: {
+          y: { stacked: true, grid: gridOpts, ticks: { callback: v => v + ' m²' } },
+          x: { stacked: true, grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  /* ── Tab 1 (load) ── */
+  window.addEventListener('load', () => {
+    initPrefactUso();
+    initPrefactPiso();
+
+    new Chart(document.getElementById('chartVentas'), {
+      type: 'doughnut',
+      data: {
+        labels: ['Familia Nieto', 'X.Form', 'Inversionista Externo'],
+        datasets: [{
+          data: [4792, 3770, 11658],
+          backgroundColor: [XF.black, XF.lime, XF.violeta],
+          borderWidth: 5, borderColor: XF.cream
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { padding: 18, usePointStyle: true, pointStyle: 'rect' } },
+          tooltip: { ...tooltipCfg, callbacks: { label: ctx => ` ${ctx.label}: $${ctx.raw.toLocaleString('de-DE')} MM (${(ctx.raw/20220*100).toFixed(1)}%)` } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chartAporteRet'), {
+      type: 'bar',
+      data: {
+        labels: ['Familia Nieto', 'X.Form', 'Inversionista Externo'],
+        datasets: [
+          { label: 'Aporte', data: [3111, 2346, 7735], backgroundColor: [`${XF.black}55`, `${XF.lime}55`, `${XF.violeta}55`], borderRadius: 0 },
+          { label: 'Retorno', data: [4792, 3770, 11658], backgroundColor: [XF.black, XF.lime, XF.violeta], borderRadius: 0 }
+        ]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true, pointStyle: 'rect' } },
+          tooltip: { ...tooltipCfg, callbacks: { label: ctx => ` ${ctx.dataset.label}: $${ctx.raw.toLocaleString('de-DE')} MM` } }
+        },
+        scales: {
+          y: { beginAtZero: true, grid: gridOpts, ticks: { callback: v => '$' + v.toLocaleString('de-DE') + ' MM' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  });
+
+  /* ── Tab 2: Costos ── */
+  function initCostos() {
+    const el = document.getElementById('chartCostos');
+    if (el._done) return; el._done = true;
+    new Chart(el, {
+      type: 'bar',
+      data: {
+        labels: ['Financieros', 'Indirectos', 'Serv. Públicos', 'Licencias', 'Lote', 'Honorarios', 'CD Obra'],
+        datasets: [{
+          label: 'MM COP',
+          data: [252.55, 175.4, 55.69, 355.65, 3110.7, 1507.07, 7735],
+          backgroundColor: [XF.mostaza, XF.naranja, XF.cyan, XF.violeta, XF.black, XF.limeDim, XF.black],
+          borderRadius: 0,
+          hoverBorderWidth: 2,
+          hoverBorderColor: XF.lime
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { ...tooltipCfg, callbacks: { label: ctx => ` $${ctx.raw.toFixed(2)} MM` } }
+        },
+        scales: {
+          y: { beginAtZero: true, grid: gridOpts, ticks: { callback: v => '$' + v.toLocaleString('de-DE') + ' MM' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  /* ── Tab 3: ROI ── */
+  function initROI() {
+    const el = document.getElementById('chartROI');
+    if (el._done) return; el._done = true;
+    new Chart(el, {
+      type: 'bar',
+      data: {
+        labels: ['Familia Nieto', 'X.Form', 'Inversionista Externo'],
+        datasets: [{
+          label: 'ROI %',
+          data: [54.0, 60.7, 50.7],
+          backgroundColor: [XF.black, XF.lime, XF.violeta],
+          borderRadius: 0,
+          hoverBorderWidth: 2,
+          hoverBorderColor: XF.lime
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { ...tooltipCfg, callbacks: { label: ctx => ` ROI: ${ctx.raw}%` } }
+        },
+        scales: {
+          y: { min: 45, max: 65, grid: gridOpts, ticks: { callback: v => v + '%' } },
+          x: { grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  /* ── Tab 3: Inversión donut ── */
+  function initInvDist() {
+    const el = document.getElementById('chartInvDist');
+    if (el._done) return; el._done = true;
+    new Chart(el, {
+      type: 'doughnut',
+      data: {
+        labels: ['Familia Nieto — Lote', 'X.Form — Honor.+Preop.', 'Inversionista — Obra'],
+        datasets: [{
+          data: [3111, 2346, 7735],
+          backgroundColor: [XF.black, XF.lime, XF.violeta],
+          borderWidth: 5, borderColor: XF.cream
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { padding: 16, usePointStyle: true, pointStyle: 'rect' } },
+          tooltip: { ...tooltipCfg, callbacks: { label: ctx => ` ${ctx.label}: $${ctx.raw.toLocaleString('de-DE')} MM (${(ctx.raw/13192*100).toFixed(1)}%)` } }
+        }
+      }
+    });
+  }
+
+  /* ── Tab 4: Honorarios ── */
+  function initHonorarios() {
+    const el = document.getElementById('chartHonorarios');
+    if (el._done) return; el._done = true;
+    new Chart(el, {
+      type: 'bar',
+      data: {
+        labels: ['Gestión/Ejec.\n(AIU 9%)', 'Diseño Arq.\nInt./Urb.', 'Diseños\nTécnicos', 'Equipo\nLegal', 'Equipo\nFinanciero', 'Gerencia\nCoordin.', 'Branding', 'Pólizas', 'Impuestos\nIVA+ICA'],
+        datasets: [{
+          label: 'MM COP',
+          data: [696.15, 280.6, 122.5, 80, 70, 60, 15, 20, 162.82],
+          backgroundColor: [XF.black, XF.violeta, XF.cyan, XF.mostaza, XF.naranja, XF.limeDim, XF.charcoal, XF.charcoal, XF.violeta],
+          borderRadius: 0,
+          hoverBorderWidth: 2,
+          hoverBorderColor: XF.lime
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { ...tooltipCfg, callbacks: { label: ctx => ` $${ctx.raw.toFixed(1)} MM` } }
+        },
+        scales: {
+          x: { beginAtZero: true, grid: gridOpts, ticks: { callback: v => '$' + v + ' MM' } },
+          y: { grid: { display: false } }
+        }
+      }
+    });
+  }
+
+  /* ── Tab 4: Preoperativos ── */
+  function initPreop() {
+    const el = document.getElementById('chartPreop');
+    if (el._done) return; el._done = true;
+    new Chart(el, {
+      type: 'doughnut',
+      data: {
+        labels: ['Costos Financieros', 'Costos Indirectos', 'Serv. Públicos', 'Licencias y Permisos'],
+        datasets: [{
+          data: [252.55, 175.4, 55.69, 355.65],
+          backgroundColor: [XF.mostaza, XF.naranja, XF.cyan, XF.violeta],
+          borderWidth: 5, borderColor: XF.cream
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: { position: 'bottom', labels: { padding: 14, usePointStyle: true, pointStyle: 'rect' } },
+          tooltip: { ...tooltipCfg, callbacks: { label: ctx => ` ${ctx.label}: $${ctx.raw.toFixed(2)} MM (${(ctx.raw/839.29*100).toFixed(1)}%)` } }
+        }
+      }
+    });
+  }
+</script>
+</body>
+</html>
